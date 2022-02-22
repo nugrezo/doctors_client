@@ -1,17 +1,132 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>Doctor`s Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-      <h1>Browser Template</h1>
-    </body>
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <h1 id="welcome">Welcome to Doctor`s Website</h1>
+  <h6 id="exp">Please sign up to create, delete, uptade and reach form data for Doctors</h6>
+  <section>
+    <div class="wrapper">
+      <div class="container">
+
+        <div class="signup-form">
+          <form id="sign-up-form" class="signup">
+            <input type="text" name="credentials[email]" class="input" placeholder="Email">
+            <input type="password" name="credentials[password]" class="input" placeholder="Password">
+            <input type="password" name="credentials[passwordConfirmation]" class="input"
+              placeholder="Confirm Password">
+            <input type="submit" class="form-button" value="Sign up!">
+          </form>
+        </div>
+        <p id="auth-message-sign-up"></p>
+
+        <div class="signin-form">
+          <form id="sign-in-form" class="signin">
+            <input type="text" name="credentials[email]" class="input" placeholder="Email">
+            <input type="password" name="credentials[password]" class="input" placeholder="Password">
+            <input type="submit" class="form-button" value="Sign in!">
+          </form>
+        </div>
+
+      </div>
+      <p id="auth-message-sign-in"></p>
+    </div>
+
+  </section>
+
+  <p id="start-message1"></p>
+
+  <section>
+    <form id="create-doctor-form" class="createDoctor">
+      <input type="text" name="doctor[name]" placeholder="Name">
+      <input type="text" name="doctor[surName]" placeholder="SurName">
+      <input type="text" name="doctor[profession]" placeholder="Profession">
+      <input type="text" name="doctor[phone]" placeholder="Phone Number">
+      <input type="text" name="doctor[address]" placeholder="Address">
+      <input type="number" name="doctor[yearsOfExperience]" placeholder="Years of Experience">
+      <input type="submit" class="create-button" value="Create Doctor">
+    </form>
+    <p id="create-doctor-message"></p>
+  </section>
+
+  <section>
+    <form id="show-all-doctors-form" class="forms">
+      <input type="submit" class="show-all-doctors-button" value="Show All Doctors">
+    </form>
+    <p id="doctors"></p>
+    <p id="show-all-doctors-message"></p>
+  </section>
+
+  <section>
+    <form id="show-doctor-form" class="forms">
+      <input type="text" name="doctor[id]" placeholder="ID">
+      <input type="submit" class="show-doctor-button" value="Show Doctor">
+    </form>
+    <p id="doctor"></p>
+    <p id="show-doctor-message"></p>
+  </section>
+
+  <section>
+    <form id="delete-doctor-form" class="forms">
+      <input type="text" name="doctor[id]" placeholder="ID">
+      <input type="submit" class="delete-button" value="Delete Doctor">
+    </form>
+    <p id="delete-doctor-message"></p>
+  </section>
+
+  <section>
+    <form id="update-doctor-form" class="forms">
+      <input type="text" name="doctor[id]" placeholder="ID">
+      <input type="submit" class="update-doctor-button" value="Get Doctor for update">
+    </form>
+    <p id="update-doctor-message"></p>
+  </section>
+
+  <section>
+    <form id="edit-doctor-form" class="forms">
+      <input type="hidden" id="doctor_id" name="doctor[id]" required placeholder="ID">
+      <input type="text" id="doctor_name" name="doctor[name]" required placeholder="Name">
+      <input type="text" id="doctor_surName" name="doctor[surName]" required placeholder="SurName">
+      <input type="text" id="doctor_profession" name="doctor[profession]" required placeholder="Profession">
+      <input type="text" id="doctor_phone" name="doctor[phone]" required placeholder="Phone Number">
+      <input type="text" id="doctor_address" name="doctor[address]" required placeholder="Address">
+      <input type="number" id="doctor_yearsOfExperience" name="doctor[yearsOfExperience]" required
+        placeholder="Years of Experience">
+      <input type="submit" class="edit-doctor-button" value="Edit Doctor"><br><br>
+    </form>
+    <p id="edit-doctor-message"></p>
+  </section>
+
+  <section>
+    <div class="changepassword-form">
+      <form id="change-password-form" class="changePassword">
+        <input type="password" name="passwords[old]" class="input-password" placeholder="Old Password">
+        <input type="password" name="passwords[new]" class="input-password" placeholder="New Password">
+        <input type="submit" class="change-password-button" value="Change Password!">
+      </form>
+    </div>
+    <p id="change-password-message"></p>
+  </section>
+
+  <section>
+    <form id="sign-out-form" class="forms">
+      <input type="submit" value="Sign Out!">
+    </form>
+    <p id="auth-message-sign-out"></p>
+
+  </section>
+
+</body>
+
 </html>
