@@ -1,5 +1,5 @@
 {
-  "name": "ga-wdi-boston.browser-template",
+  "name": "doctors_api",
   "version": "0.0.3",
   "private": true,
   "license": {
@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.0.1",
+    "core-js": "^3.21.1",
     "jquery": "^3.6.0",
     "popper.js": "^1.14.3"
   },
