@@ -1,11 +1,17 @@
 const store = require('./../../store')
 
 const signUpSuccess = function (res) {
-  $('#auth-message-sign-up').show()
-  $('#auth-message-sign-up').text('Thanks for Siging up ' + res.user.email + ' You can Sign In Now')
+  $('#sign-in-now').text('Please sign in now with the email and password you typed in')
+  $('#sign-in-now').css('color', 'yellow')
+  setTimeout(() => {
+    $('#sign-in-now').text('')
+  }, 5000)
   $('#sign-up-form').trigger('reset')
-  $('#auth-message-sign-out').text('')
+  $('#sign-up-form').hide()
+  $('#sign-in-form').show()
+  $('#dont-have-account-yet').hide()
 }
+
 
 const signUpFailure = function () {
   $('#auth-message-sign-up').text('Try again.')

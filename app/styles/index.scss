@@ -5,6 +5,32 @@
   padding: 0;
 }
 
+#sign-in-form {
+  background-color: #34b3a0;
+  color: rgb(1, 9, 4);
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  padding: 1em;
+  width: 400px;
+}
+
+#sign-up-form {
+  background-color: #34b3a0;
+  color: rgb(1, 9, 4);
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  padding: 1em;
+  width: 400px;
+}
+
 #welcome {
   text-align: center;
 }

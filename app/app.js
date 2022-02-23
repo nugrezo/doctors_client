@@ -9,6 +9,17 @@ const authEvents = require('./scripts/auth/events')
 const doctorEvents = require('./scripts/doctor/events')
 $(() => {
   $(() => {
+    $('#sign-up-form').hide()
+    $('#dont-have-account-yet').on('click', function (event) {
+      event.preventDefault()
+      $('#sign-up-form').show()
+      $('#sign-in-form').hide()
+    })
+    $('#have-account').on('click', function (event) {
+      event.preventDefault()
+      $('#sign-in-form').show()
+      $('#sign-up-form').hide()
+    })
     $('#create-doctor-form').hide()
     $('#create-doctor-message').hide()
     $('#show-all-doctors-form').hide()
