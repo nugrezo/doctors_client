@@ -24,7 +24,7 @@
           <form id="sign-up-form" class="signup">
             <input type="text" name="credentials[email]" class="input" placeholder="Email">
             <input type="password" name="credentials[password]" class="input" placeholder="Password">
-            <input type="password" name="credentials[passwordConfirmation]" class="input"
+            <input type="password" name="credentials[password_confirmation]" class="input"
               placeholder="Confirm Password">
             <input type="submit" class="form-button" value="Sign up!">
           </form>
@@ -50,11 +50,10 @@
   <section>
     <form id="create-doctor-form" class="createDoctor">
       <input type="text" name="doctor[name]" placeholder="Name">
-      <input type="text" name="doctor[surName]" placeholder="SurName">
-      <input type="text" name="doctor[profession]" placeholder="Profession">
-      <input type="text" name="doctor[phone]" placeholder="Phone Number">
-      <input type="text" name="doctor[address]" placeholder="Address">
-      <input type="number" name="doctor[yearsOfExperience]" placeholder="Years of Experience">
+      <input type="text" name="doctor[lastName]" placeholder="Last Name">
+      <input type="text" name="doctor[specialty]" placeholder="Profession">
+      <input type="text" name="doctor[address]" placeholder="Phone Number">
+      <input type="text" name="doctor[phoneNumber]" placeholder="Address">  
       <input type="submit" class="create-button" value="Create Doctor">
     </form>
     <p id="create-doctor-message"></p>
@@ -97,12 +96,10 @@
     <form id="edit-doctor-form" class="forms">
       <input type="hidden" id="doctor_id" name="doctor[id]" required placeholder="ID">
       <input type="text" id="doctor_name" name="doctor[name]" required placeholder="Name">
-      <input type="text" id="doctor_surName" name="doctor[surName]" required placeholder="SurName">
-      <input type="text" id="doctor_profession" name="doctor[profession]" required placeholder="Profession">
-      <input type="text" id="doctor_phone" name="doctor[phone]" required placeholder="Phone Number">
-      <input type="text" id="doctor_address" name="doctor[address]" required placeholder="Address">
-      <input type="number" id="doctor_yearsOfExperience" name="doctor[yearsOfExperience]" required
-        placeholder="Years of Experience">
+      <input type="text" id="doctor_surName" name="doctor[lastName]" required placeholder="lastName">
+      <input type="text" id="doctor_profession" name="doctor[specialty]" required placeholder="Profession">
+      <input type="text" id="doctor_phone" name="doctor[address]" required placeholder="Phone Number">
+      <input type="text" id="doctor_address" name="doctor[phoneNumber]" required placeholder="Address">
       <input type="submit" class="edit-doctor-button" value="Edit Doctor"><br><br>
     </form>
     <p id="edit-doctor-message"></p>

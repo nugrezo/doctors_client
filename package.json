@@ -7,9 +7,12 @@
     "content": "CC­BY­NC­SA 4.0"
   },
   "dependencies": {
+    "babel": "^6.23.0",
     "bootstrap": "^5.0.1",
     "core-js": "^3.21.1",
+    "crypto": "^1.0.1",
     "jquery": "^3.6.0",
+    "passport": "^0.5.2",
     "popper.js": "^1.14.3"
   },
   "devDependencies": {

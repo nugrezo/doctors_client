@@ -65,7 +65,7 @@ module.exports = {
             compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
               // open the application once the build has finished
               if (firstBuild) {
-                opn('http://localhost:' + port)
+                opn('http://127.0.0.1:' + port)
               }
               firstBuild = false
             })
