@@ -5,6 +5,76 @@
   padding: 0;
 }
 
+table {
+  width: 80%;
+  margin: 40px auto;
+  background: rgb(124, 154, 167);
+}
+
+table.list {
+  text-align: center;
+  width: 100%;
+  border: 1px solid rgb(204, 200, 200);
+}
+
+td {
+  border: 1px solid rgb(204, 200, 200);
+  text-align: left;
+  padding: 8px 15px;
+}
+
+tr:nth-child(even),
+table.list thread > tr {
+  background-color: rgb(204, 200, 200);
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid rgb(165, 161, 161);
+  border-radius: 4px;
+}
+
+#createButton[type="submit"],
+button[type="reset"] {
+  background: #eee;
+  padding: 6px 12px;
+  margin: 15px 0 10px;
+  display: inline-block;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.15rem;
+  cursor: pointer;
+  outline: none;
+}
+
+#createButton[type="submit"]:hover {
+  background: #4b99d8;
+}
+
+button[type="reset"]:hover {
+  background: #4b99d8;
+}
+
+button {
+  background: #eee;
+  padding: 6px 12px;
+  margin: 15px 0 10px;
+  display: inline-block;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background: #4b99d8;
+}
+
 #sign-in-form {
   background-color: #34b3a0;
   color: rgb(1, 9, 4);
@@ -31,6 +101,18 @@
   width: 400px;
 }
 
+.row {
+  border: 1px solid black;
+  background-color: #34b3a0;
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  padding: 1em;
+  width: 1300px;
+}
+
 #welcome {
   text-align: center;
 }
@@ -44,9 +126,10 @@ body {
   font-family: roboto;
 }
 
-#auth-message-sign-up,
-#auth-message-sign-in {
+#sign-in-fail,
+#sign-up-fail {
   text-align: center;
+  color: red;
 }
 
 .container {

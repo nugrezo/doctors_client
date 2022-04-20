@@ -1,5 +1,5 @@
 'use strict'
-
+// const { Modal } = require('bootstrap')
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 
@@ -7,6 +7,7 @@
 // require('./example')
 const authEvents = require('./scripts/auth/events')
 const doctorEvents = require('./scripts/doctor/events')
+
 $(() => {
   $(() => {
     $('#sign-up-form').hide()
@@ -21,29 +22,39 @@ $(() => {
       $('#sign-up-form').hide()
     })
     $('#create-doctor-form').hide()
-    $('#create-doctor-message').hide()
     $('#show-all-doctors-form').hide()
-    $('#show-all-doctors-message').hide()
-    $('#show-doctor-form').hide()
-    $('#show-doctor-message').hide()
-    $('#delete-doctor-form').hide()
+    $('#nav-bar').hide()
     $('#delete-doctor-message').hide()
-    $('#update-doctor-form').hide()
-    $('#update-doctor-message').hide()
-    $('#edit-doctor-form').hide()
-    $('#edit-doctor-message').hide()
-    $('#sign-out-form').hide()
-    $('#change-password-form').hide()
-    $('#change-password-message').hide()
     $('#sign-up-form').on('submit', authEvents.onSignUpForm)
     $('#sign-in-form').on('submit', authEvents.onSignInForm)
     $('#change-password-form').on('submit', authEvents.onChangePasswordForm)
-    $('#sign-out-form').on('submit', authEvents.onSignOut)
-    $('#create-doctor-form').on('submit', doctorEvents.onCreateDoctorForm)
+    $('#sign-out').on('click', authEvents.onSignOut)
+    $('#create-doctor').on('submit', doctorEvents.onCreateDoctorForm)
     $('#show-all-doctors-form').on('submit', doctorEvents.onShowAllDoctorsForm)
-    $('#show-doctor-form').on('submit', doctorEvents.onShowDoctorForm)
-    $('#delete-doctor-form').on('submit', doctorEvents.onDeleteDoctorForm)
+    $('#show-all-doctors-table').on('click', '.delete-button', function () {
+      const modalDelete = document.getElementById('myModal-delete')
+      modalDelete.style.display = 'block'
+    })
+    const spanDelete = document.getElementsByClassName('close-delete')[0]
+    const modalDelete = document.getElementById('myModal-delete')
+    spanDelete.onclick = function () {
+      modalDelete.style.display = 'none'
+    }
+
+    $('#show-all-doctors-table').on('click', '.edit-button', function () {
+      const modalUpdate = document.getElementById('myModal-update')
+      modalUpdate.style.display = 'block'
+    })
+    const span = document.getElementsByClassName('close-update')[0]
+    const modalUpdate = document.getElementById('myModal-update')
+    span.onclick = function () {
+      modalUpdate.style.display = 'none'
+    }
+    $('#storeList').on('click', '.clear-button', function (e) {
+      $(this).closest('tr').remove()
+    })
     $('#update-doctor-form').on('submit', doctorEvents.onUpdateDoctorForm)
-    $('#edit-doctor-form').on('submit', doctorEvents.onEditDoctorForm)
+    $('#show-all-doctors').on('click', doctorEvents.onShowAllDoctors)
+    $('#delete-doctor-form').on('submit', doctorEvents.onDeleteDoctorForm)
   })
 })

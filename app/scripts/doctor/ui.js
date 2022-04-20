@@ -1,50 +1,66 @@
 const createDoctorSuccess = function (res) {
-  $('#create-doctor-message').text('You created doctor successfully.')
-  $('#create-doctor-form').trigger('reset')
-  $('#change-password-message').text('')
-  $('#delete-doctor-message').text('')
-  $('#edit-doctor-message').text('')
+  console.log('res is', res)
+  console.log('doctor id is', res.doctor._id)
+  const table = document.getElementById('storeList').getElementsByTagName('tbody')[0]
+  const newRow = table.insertRow(table.length)
+  const cell1 = newRow.insertCell(0)
+  cell1.innerHTML = res.doctor.name
+  const cell2 = newRow.insertCell(1)
+  cell2.innerHTML = res.doctor.lastName
+  const cell3 = newRow.insertCell(2)
+  cell3.innerHTML = res.doctor.specialty
+  const cell4 = newRow.insertCell(3)
+  cell4.innerHTML = res.doctor.address
+  const cell5 = newRow.insertCell(4)
+  cell5.innerHTML = res.doctor.phoneNumber
+  const cell6 = newRow.insertCell(5)
+  cell6.innerHTML = res.doctor._id
+  const cell7 = newRow.insertCell(6)
+  cell7.innerHTML = '<button class="clear-button">Clear List</button>'
 }
 
 const createDoctorFailure = function () {
-  $('#create-doctor-message').text('All required information must be completed.')
+  $('#create-doctor-fail').text('Missing Information!!!!')
+  setTimeout(() => {
+    $('#create-doctor-fail').text('')
+  }, 5000)
   $('#change-password-message').text('')
   $('#delete-doctor-message').text('')
   $('#edit-doctor-message').text('')
 }
 
 const showAllDoctorsSuccess = function (res) {
-  // id of result area
-  const selector = '#doctors'
-  // Cleaning inner html of result area
-  $(selector).empty()
-  // Loop each doctor object and add it to result area
-  $.each(res.doctors, function (index, doctor) {
-    addDoctorToUi(selector, doctor)
+  let allDoctorsData = ''
+  res.doctors.forEach(doctor => {
+    const doctorData = (`
+<table>
+  <thead>
+      <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Specialty</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>Doctor Id</th>
+      </tr>
+  </thead>
+    <tbody>
+      <tr>
+        <td>${doctor.name}</td>
+        <td>${doctor.lastName}</td>
+        <td>${doctor.specialty}</td>
+        <td>${doctor.address}</td>
+        <td>${doctor.phoneNumber}</td>
+        <td>${doctor._id}</td>
+        <td><button class="edit-button">Edit</button><button class="delete-button">Delete</button></td>
+        
+     </tr>
+  </tbody>
+</table>
+      `)
+    allDoctorsData += doctorData
   })
-  $('#show-all-doctors-message').text('Great. You`ve listed all the doctors that you created.')
-  $('#create-doctor-message').text('')
-  $('#delete-doctor-message').text('')
-  $('#edit-doctor-message').text('')
-  $('#change-password-message').text('')
-  $('#show-doctor-message').text('')
-}
-
-const showAllDoctorsFailure = function () {
-  $('#show-all-doctors-form').text('Try again.')
-  $('#change-password-message').text('')
-  $('#delete-doctor-message').text('')
-  $('#show-doctor-message').text('')
-}
-
-const showDoctorSuccess = function (res) {
-  const doctor = res.doctor
-  // id of result area
-  const selector = '#doctor'
-  // Cleaning inner html of result area
-  $(selector).empty()
-  //  add doctor object to result area
-  addDoctorToUi(selector, doctor)
+  $('#show-all-doctors-table').html(allDoctorsData)
 
   $('#show-doctor-message').text('Great! You list the doctor successfully. Click Show all Doctors to see your new list! ')
   $('#show-doctor-form').trigger('reset')
@@ -53,22 +69,7 @@ const showDoctorSuccess = function (res) {
   $('#delete-doctor-message').text('')
 }
 
-// Appends doctor object with UI format to given dom element
-const addDoctorToUi = function (selector, doctor) {
-  $(selector).append(addDoctorToUiToLine('Doctor Name:', doctor.name + ' ' + doctor.lastName) +
-  addDoctorToUiToLine('Profession:', doctor.specialty) +
-  addDoctorToUiToLine('Phone:', doctor.address) +
-  addDoctorToUiToLine('Address:', doctor.phoneNumber) +
-  addDoctorToUiToLine('Doctor Id:', doctor._id) +
-'<br><br>')
-}
-
-// Single line format for addDoctorToUi function
-const addDoctorToUiToLine = function (fPhrase, secPhrase) {
-  return '<strong>' + fPhrase + '</strong> ' + secPhrase + '<br>'
-}
-
-const showDoctorFailure = function () {
+const showAllDoctorsFailure = function () {
   $('#show-doctor-message').text('Try again.')
   $('#change-password-message').text('')
   $('#delete-doctor-message').text('')
@@ -76,55 +77,33 @@ const showDoctorFailure = function () {
 }
 
 const deleteDoctorSuccess = function (res) {
-  $('#delete-doctor-message').text('You`ve deleted doctor successfully.Click Show all Doctors to see your new list!')
+  $('#delete-doctor-message').text('Doctor data is deleted!')
+  setTimeout(() => {
+    $('#delete-doctor-message').text('')
+  }, 3000)
   $('#delete-doctor-form').trigger('reset')
-  $('#show-doctor-message').text('')
-  $('#doctor').text('')
-  $('#change-password-message').text('')
-  $('#edit-doctor-message').text('')
 }
 
 const deleteDoctorFailure = function () {
   $('#delete-doctor-message').text('Try again.')
+  setTimeout(() => {
+    $('#delete-doctor-message').text('')
+  }, 5000)
 }
 
-// Fill edit form for selected object
 const updateDoctorSuccess = function (res) {
-  const doctor = res.doctor
-  $('#edit-doctor-form').find('#doctor_id').val(doctor._id)
-  $('#edit-doctor-form').find('#doctor_name').val(doctor.name)
-  $('#edit-doctor-form').find('#doctor_surName').val(doctor.lastName)
-  $('#edit-doctor-form').find('#doctor_profession').val(doctor.specialty)
-  $('#edit-doctor-form').find('#doctor_phone').val(doctor.address)
-  $('#edit-doctor-form').find('#doctor_address').val(doctor.phoneNumber)
+  $('#update-doctor-message').text('Form is updated!')
+  setTimeout(() => {
+    $('#update-doctor-message').text('')
+  }, 5000)
   $('#update-doctor-form').trigger('reset')
-  $('#delete-doctor-message').text('')
-  $('#change-password-message').text('')
-  $('#edit-doctor-message').text('')
-  $('#show-all-doctors-message').text('')
-  $('#show-doctor-message').text('')
-  $('#doctor').text('')
-  $('#update-doctor-message').text('Ready to edit')
 }
 
 const updateDoctorFailure = function () {
   $('#update-doctor-message').text('Try again.')
-  $('#change-password-message').text('')
-  $('#show-doctor-message').text('')
-}
-
-const editDoctorSuccess = function (res) {
-  $('#edit-doctor-message').text('You`ve successfully updated the doctor. Click Show all Doctors to see your new list!')
-  $('#edit-doctor-form').trigger('reset')
-  $('#change-password-message').text('')
-  $('#delete-doctor-message').text('')
-  $('#show-all-doctors-message').text()
-  $('#show-doctor-message').text('')
-  $('#update-doctor-message').text('')
-}
-
-const editDoctorFailure = function () {
-  $('#edit-doctor-message').text('Failed. Try again.')
+  setTimeout(() => {
+    $('#update-doctor-message').text('')
+  }, 5000)
   $('#change-password-message').text('')
   $('#show-doctor-message').text('')
 }
@@ -134,12 +113,8 @@ module.exports = {
   createDoctorFailure: createDoctorFailure,
   showAllDoctorsSuccess: showAllDoctorsSuccess,
   showAllDoctorsFailure: showAllDoctorsFailure,
-  showDoctorFailure: showDoctorFailure,
-  showDoctorSuccess: showDoctorSuccess,
   deleteDoctorSuccess: deleteDoctorSuccess,
   deleteDoctorFailure: deleteDoctorFailure,
   updateDoctorSuccess: updateDoctorSuccess,
-  updateDoctorFailure: updateDoctorFailure,
-  editDoctorSuccess: editDoctorSuccess,
-  editDoctorFailure: editDoctorFailure
+  updateDoctorFailure: updateDoctorFailure
 }

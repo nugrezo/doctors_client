@@ -20,19 +20,16 @@ const onShowAllDoctorsForm = function (event) {
     .catch(ui.showAllDoctorsFailure)
 }
 
-const onShowDoctorForm = function (event) {
+const onShowAllDoctors = function (event) {
   event.preventDefault()
-  const form = event.target
-  const data = getFormFields(form)
-  api.getDoctor(data.doctor.id)
-    .then(ui.showDoctorSuccess)
-    .catch(ui.showDoctorFailure)
+  api.getAllDoctors()
+    .then(ui.showAllDoctorsSuccess)
+    .catch(ui.showAllDoctorsFailure)
 }
 
 const onDeleteDoctorForm = function (event) {
   event.preventDefault()
   const form = event.target
-  console.log('event is:', event)
   const data = getFormFields(form)
   api.deleteDoctor(data.doctor.id)
     .then(ui.deleteDoctorSuccess)
@@ -41,29 +38,28 @@ const onDeleteDoctorForm = function (event) {
 
 const onUpdateDoctorForm = function (event) {
   event.preventDefault()
-  console.log('event is:', event)
   const form = event.target
   const data = getFormFields(form)
-  api.getDoctor(data.doctor.id)
+  api.updateDoctor(data)
     .then(ui.updateDoctorSuccess)
     .catch(ui.updateDoctorFailure)
 }
 
-const onEditDoctorForm = function (event) {
-  event.preventDefault()
-  console.log('event is:', event)
-  const form = event.target
-  const data = getFormFields(form)
-  api.updateDoctor(data, data.doctor.id)
-    .then(ui.editDoctorSuccess)
-    .catch(ui.editDoctorFailure)
-}
+// const onSaveUpdate = function (event) {
+//   event.preventDefault()
+//   console.log('event is:', event)
+//   const form = event.target
+//   const data = getFormFields(form)
+//   api.updateDoctor(data, data.doctor.id)
+//     .then(ui.editDoctorSuccess)
+//     .catch(ui.editDoctorFailure)
+// }
 
 module.exports = {
   onCreateDoctorForm: onCreateDoctorForm,
   onShowAllDoctorsForm: onShowAllDoctorsForm,
-  onShowDoctorForm: onShowDoctorForm,
+  // onShowDoctorForm: onShowDoctorForm,
   onDeleteDoctorForm: onDeleteDoctorForm,
   onUpdateDoctorForm: onUpdateDoctorForm,
-  onEditDoctorForm: onEditDoctorForm
+  onShowAllDoctors: onShowAllDoctors
 }
