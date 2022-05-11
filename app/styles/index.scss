@@ -241,3 +241,33 @@ body {
   color: #3e3e40;
   font-family: roboto;
 }
+
+#myModal-update {
+  height: 700px;
+  width: 700px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#update-doctor-form {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(131, 167, 124);
+}
+
+#myModal-delete {
+  height: 700px;
+  width: 700px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#delete-doctor-form {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(221, 31, 31);
+}
