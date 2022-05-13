@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Doctor`s Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+</head>
+
+<body>
+
+  <header>
+    <div id="nav-bar">
+      <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+        <div class='collapse navbar-collapse' id='navMenu'>
+          <!-- Items of nav bar most of which is linked to modal boxes -->
+          <ul class='navbar-nav me-auto order-0'>
+            <li class='nav-item'>
+              <a class="nav-link active" aria-current="page" href="#">Doctor Registration</a>
+            </li>
+          </ul>
+          <ul class='navbar-nav ms-auto'>
+            <li class='nav-item'>
+              <a href='#' class='nav-link' data-bs-toggle='modal' data-bs-target='#change-password'>Change
+                Password</a>
+            </li>
+            <li class='nav-item'><a href='#' class='nav-link' id='sign-out'>Sign Out</a>
+            </li>
+          </ul>
+        </div>
+      </nav><br>
+    </div>
+  </header>
+
+  <h1 id="welcome">Welcome to Doctor`s Website</h1>
+  <h6 id="exp">Please sign up to create, delete, uptade and reach form data for Doctors</h6>
+
+  <section id="create-doctor-form">
+  <table>
+    <tr>
+      <td>
+        <form autocomplete="off" id="create-doctor">
+          <div>
+            <label for="doctorName">Doctor Name</label>
+            <input type="text" name="doctor[name]" id="doctorName">
+          </div>
+          <div>
+            <label for="doctorLastName">Doctor Last Name</label>
+            <input type="text" name="doctor[lastName]" id="doctorLastName">
+          </div>
+          <div>
+            <label for="doctorSpecialty">Specialty</label>
+            <input type="text" name="doctor[specialty]" id="doctorSpecialty">
+            </div>
+          <div>
+            <label for="doctorAddress">Address</label>
+            <input type="text" name="doctor[address]" id="doctorAddress">
+          </div>
+          <div>
+            <label for="doctorPhoneNumber">PhoneNumber</label>
+            <input type="text" name="doctor[phoneNumber]" id="doctorPhoneNumber">
+          </div>
+          <div class="form_action--button"> 
+            <button id="createButton" type="submit">Create</button>
+            <button type="reset">Reset</button>
+          </div>
+        </form>
+        <p id="create-doctor-fail"></p>
+        <td>
+          <table class="list" id="storeList">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Specialty</th>
+                <th>Address</th>
+                <th>Phone Number</th>
+                <th>Doctor Id</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </td>
+      </td>
+    </tr>
+  </table> 
+  </section>
+  <section id="show-all-doctors-form">
+  <table>
+    <tr>
+      <td>
+    <section>
+      <button id="show-all-doctors" type="click">Show all Doctors</button>
+    </section>
+      <td>
+        <table class="list" id="show-all-doctors-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Last Name</th>
+              <th>Specialty</th>
+              <th>Address</th>
+              <th>Phone Number</th>
+              <th>Doctor Id</th>
+            </tr>
+          </thead>
+          <tbody>
+  
+          </tbody>
+        </table>
+      </td>
+      </td>
+    </tr>
+  </table>
+  </section>
+  <section>
+    <form id="sign-in-form">
+      <small id="sign-in-now"></small>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="text" class="form-control" placeholder="Enter email" name="credentials[email]">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" placeholder="Password" name="credentials[password]">
+      </div><br>
+      <button type="submit" class="btn btn-primary">Sign In</button>
+      <p id="sign-in-fail"></p>
+      <button id="dont-have-account-yet" type="button" class="btn btn-warning">Don`t have an account yet?</button>
+    </form>
+  </section>
+
+  <section>
+    <form id="sign-up-form">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="text" class="form-control" placeholder="Enter email" name="credentials[email]">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" placeholder="Password" name="credentials[password]">
+      </div><br>
+      <div class="form-group">
+        <label for="password-confirmation">Confirm Password</label>
+        <input type="password" class="form-control" placeholder="Confirm Password"
+          name="credentials[password_confirmation]">
+      </div><br>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+      <button id="have-account" type="button" class="btn btn-info">I have an account</button>
+      <p id="sign-up-fail"></p>
+    </form>
+  </section>
+
+  <div class="modal fade" id="change-password" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="change-password-message">Change Password</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form id="change-password-form">
+          <div class="modal-body"> 
+            <label for="oldpassword"></label>
+            <input type="password" class="form-control" id="oldpassword" placeholder="Old Password" name="passwords[old]">
+            <label for="newpasswordChange"></label>
+            <input type="password" class="form-control" id="newpassword" placeholder="New Password" name="passwords[new]">
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="close-password-change" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Save changes">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+      
+    <div id="myModal-update" class="modal">
+      <div class="modal-content">
+        <span class="close-update">&times;</span>
+        <section>
+            <form autocomplete="off" id="update-doctor-form">
+              <div>
+                <label for="doctorId">Doctor Id</label>
+                <input type="text" name="doctor[id]" id="updateDoctorId">
+              </div>
+              <div>
+                <label for="doctorName">Doctor Name</label>
+                <input type="text" name="doctor[name]" id="updateDoctorName">
+              </div>
+              <div>
+                <label for="doctorLastName">Doctor Last Name</label>
+                <input type="text" name="doctor[lastName]" id="updateDoctorLastName">
+              </div>
+              <div>
+                <label for="doctorSpecialty">Specialty</label>
+                <input type="text" name="doctor[specialty]" id="updateDoctorSpecialty">
+              </div>
+              <div>
+                <label for="doctorAddress">Address</label>
+                <input type="text" name="doctor[address]" id="updateDoctorAddress">
+              </div>
+              <div>
+                <label for="doctorPhoneNumber">PhoneNumber</label>
+                <input type="text" name="doctor[phoneNumber]" id="updateDoctorPhoneNumber">
+              </div>
+              <div class="form_action--button">
+                <button id="update-button" type="submit">Update</button>
+              </div>
+              <p id="update-doctor-message"></p>
+            </form>      
+        </section>
+      </div>
+    </div>
+
+  <div id="myModal-delete" class="modal">
+    <div class="modal-content">
+      <span class="close-delete">&times;</span>
+      <section>
+        <form autocomplete="off" id="delete-doctor-form">
+          <div>
+            <label for="doctorId">Doctor Id</label>
+            <input type="text" name="doctor[id]" id="deleteDoctorId">
+          </div>
+          <div class="form_action--delete-button">
+            <button id="delete-button" type="submit">Delete</button>
+          </div>
+          <p id="delete-doctor-message"></p>
+        </form>
+      </section>
+    </div>
+  </div>
+
+</body>
+</html>
